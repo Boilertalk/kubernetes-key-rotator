@@ -48,21 +48,21 @@ func main() {
 	_, err := rand.Read(b);
 
 	if(err == nil) {
-		panic("Error while generating a new random key:\n", err)
+		panic(fmt.Sprintf("Error while generating a new random key:\n", err))
 	}
 
 	/* kubernetes secret sht */
 	kubeSet, err := kubernetes.NewForConfig(config)
 	if(err != nil) {
-		panic("Error while doing kubernetes sht:\n", err)
+		panic(fmt.Sprintf("Error while doing kubernetes sht:\n", err))
 	}
 	secret, err := kubeSet.CoreV1().Secrets(os.Getenv("SECRET_NAMESPACE")).Get(os.Getenv("SECRET_NAME"))
 	if(err != nil) {
-		panic("Error while retrieving secrets:\n", err)
+		panic(fmt.Sprintf("Error while retrieving secrets:\n", err))
 	}
 
-	fmt.Sprintf("current: ", hex.EncodeToString(secret.Data["master_key"]))
-	fmt.Sprintf("old:     ", hex.EncodeToString(secret.Data["master_key_old"]));
+	fmt.Printf("current: ", hex.EncodeToString(secret.Data["master_key"]))
+	fmt.Printf("old:     ", hex.EncodeToString(secret.Data["master_key_old"]));
 
 	/* make current key into the old key */
 
