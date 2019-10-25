@@ -56,8 +56,7 @@ func main() {
 	if(err != nil) {
 		panic("Error while doing kubernetes sht:\n", err)
 	}
-	secret, err := kubeSet.CoreV1().Secrets(os.Getenv("SECRET_NAMESPACE"))
-				.Get(os.Getenv("SECRET_NAME"))
+	secret, err := kubeSet.CoreV1().Secrets(os.Getenv("SECRET_NAMESPACE")).Get(os.Getenv("SECRET_NAME"))
 	if(err != nil) {
 		panic("Error while retrieving secrets:\n", err)
 	}
