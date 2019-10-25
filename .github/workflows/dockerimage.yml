@@ -19,4 +19,4 @@ jobs:
         name: Boilertalk/kubernetes-key-rotator
         username: guithub
         password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com/boilertalk/kubernetes-key-rotator/main
+        registry: docker.pkg.github.com/
