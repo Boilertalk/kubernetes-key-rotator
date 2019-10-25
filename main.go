@@ -32,7 +32,7 @@ func main() {
 	newkey := make([]byte, 4096);
 	_, err := rand.Read(newkey);
 
-	if(err == nil) {
+	if(err != nil) {
 		panic(fmt.Sprintf("Error while generating a new random key:\n", err))
 	}
 
