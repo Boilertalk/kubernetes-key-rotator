@@ -16,6 +16,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@2.7
       with:
+        name: boilertalk/kubernetes-key-rotator/main
         username: guithub
         password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com/boilertalk/kubernetes-key-rotator/main
+        registry: docker.pkg.github.com
