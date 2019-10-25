@@ -2,7 +2,7 @@ package main
 
 import (
 	"crypto/rand"
-	"core/v1"
+	"k8s.io/api/core/v1"
 	"fmt"
 	"encodeing/hex"
 )
