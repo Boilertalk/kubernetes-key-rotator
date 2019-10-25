@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/rand"
 	"k8s.io/api/core/v1"
+	"k8s.io/client-go/kubernetes"
 	"fmt"
 	"encoding/hex"
 )
@@ -23,29 +24,11 @@ type ResponseMessage struct {
 	Message string `json:"message"`
 }
 
-// GLOBAL VARIABLES
-var hmacSecret string
-var slackWebhookUrl string
-var globalLogger *logger.Logger
-var kubeSet *kubernetes.Clientset
-
-/// HMAC signature generation
-func CreateSignature(input []byte, key string) string {
-	signatureKey := []byte(key)
-
-	h := hmac.New(sha1.New, signatureKey)
-	h.Write(input)
-
-	return "sha1=" + hex.EncodeToString(h.Sum(nil))
-}
-
-
-
 
 func main() {
 	/* generate new key */
 	newkey := make([]byte, 4096);
-	_, err := rand.Read(b);
+	_, err := rand.Read(newkey);
 
 	if(err == nil) {
 		panic(fmt.Sprintf("Error while generating a new random key:\n", err))
