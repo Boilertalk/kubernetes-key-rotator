@@ -3,7 +3,7 @@ package main
 import (
 	"crypto/rand"
 	"k8s.io/api/core/v1"
-	"k8s.io/client.go/rest"
+	"k8s.io/client-go/rest"
 	"k8s.io/client-go/kubernetes"
 	"fmt"
 	"os"
