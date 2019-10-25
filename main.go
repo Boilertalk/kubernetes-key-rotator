@@ -3,8 +3,10 @@ package main
 import (
 	"crypto/rand"
 	"k8s.io/api/core/v1"
+	"k8s.io/client.go/rest"
 	"k8s.io/client-go/kubernetes"
 	"fmt"
+	"os"
 	"encoding/hex"
 )
 
@@ -35,6 +37,10 @@ func main() {
 	}
 
 	/* kubernetes secret sht */
+	config, err := rest.InClusterConfig()
+	if(err != nil) {
+		panic(fmt.Sprintf("Error while doint config sht:\n", err);
+	}
 	kubeSet, err := kubernetes.NewForConfig(config)
 	if(err != nil) {
 		panic(fmt.Sprintf("Error while doing kubernetes sht:\n", err))
