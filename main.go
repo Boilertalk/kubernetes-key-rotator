@@ -5,6 +5,7 @@ import (
 	"k8s.io/api/core/v1"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/kubernetes"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"fmt"
 	"os"
 	"encoding/hex"
@@ -45,7 +46,7 @@ func main() {
 	if(err != nil) {
 		panic(fmt.Sprintf("Error while doing kubernetes sht:\n", err))
 	}
-	secret, err := kubeSet.CoreV1().Secrets(os.Getenv("SECRET_NAMESPACE")).Get(os.Getenv("SECRET_NAME"))
+	secret, err := kubeSet.CoreV1().Secrets(os.Getenv("SECRET_NAMESPACE")).Get(os.Getenv("SECRET_NAME"), metav1.Getoptions{})
 	if(err != nil) {
 		panic(fmt.Sprintf("Error while retrieving secrets:\n", err))
 	}
