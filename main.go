@@ -39,7 +39,7 @@ func main() {
 	/* kubernetes secret sht */
 	config, err := rest.InClusterConfig()
 	if(err != nil) {
-		panic(fmt.Sprintf("Error while doint config sht:\n", err);
+		panic(fmt.Sprintf("Error while doint config sht:\n", err));
 	}
 	kubeSet, err := kubernetes.NewForConfig(config)
 	if(err != nil) {
